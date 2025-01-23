@@ -1,0 +1,6 @@
+[submodule "lib/picar-x"]
+	path = lib/picar-x
+	url = git@github.com:gandres42/picar-x.git
+[submodule "lib/robot-hat"]
+	path = lib/robot-hat
+	url = git@github.com:gandres42/robot-hat.git
