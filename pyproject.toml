@@ -4,4 +4,6 @@ version = "0.1.0"
 description = "Knight Automated Roving Robot"
 readme = "README.md"
 requires-python = ">=3.9"
-dependencies = []
+dependencies = [
+    "matplotlib>=3.9.4",
+]

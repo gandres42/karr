@@ -17,20 +17,17 @@ class LineLocalizer:
         c = sample[1]
         if c > self.thresh_center:
             ratio = (self.dark_size - (c - self.dark_thresh)) / self.dark_size
-            ratio = min(math.pow(ratio, 6), 1)
+            ratio = min(math.pow(ratio, 4), 1)
         else:
             ratio = (self.light_size - (self.light_thresh - c)) / self.light_size
-            ratio = -min(math.pow(ratio, 6), 1)
-        # print(ratio)
+            ratio = -min(math.pow(ratio, 4), 1)
         return ratio * self.scale
         
         
         
 px = Picarx()
-lx = LineLocalizer(320, 1461, 20)
-px.forward(20)
+lx = LineLocalizer(190, 750, 60)
+px.forward(5)
 while True:
     angle = lx.get_position(px.get_grayscale_data())
-    # print(angle)
     px.set_dir_servo_angle(angle)
-# LineLocalizer(350, 450)

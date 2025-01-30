@@ -1,0 +1,28 @@
+from picarx import Picarx
+import math
+import os
+import time
+import json
+import matplotlib.pyplot as plt
+
+px = Picarx()
+cal = {
+    "min": [math.inf, math.inf, math.inf],
+    "max": [-math.inf, -math.inf, -math.inf]
+}
+time.sleep(2)
+
+try:
+    while True:
+        sample = px.get_grayscale_data()
+        for i in range(len(sample)):
+            if cal['min'][i] > sample[i]:
+                cal['min'][i] = sample[i]
+            if cal['max'][i] < sample[i]:
+                cal['max'][i] = sample[i]
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(cal['min'])
+        print(cal['max'])
+except KeyboardInterrupt:
+    with open('cal.json', 'w') as f:
+        json.dump(cal, f)
