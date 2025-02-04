@@ -27,15 +27,15 @@ class LineLocalizer:
     def get_position(self, sample):
         sample = self.sample_normalization(sample)
 
-        ratio = (sample[0] - sample[1]) / 1000
-        return ratio * 60      
+        ratio = ((sample[0] - sample[1]) / 1000) ** 2
+        return ratio * 60    
         
         
 px = Picarx()
 with open('cal.json', 'r') as file: cal = json.load(file)
 lx = LineLocalizer(cal)
 
-# px.forward(5)
+px.forward(5)
 while True:
     angle = lx.get_position(px.get_grayscale_data())
     # print(angle * 60)

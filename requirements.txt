@@ -20,7 +20,6 @@ lgpio
 markdown
 markupsafe
 matplotlib
-numpy
 opencv-python
 packaging
 pigpio
@@ -28,9 +27,6 @@ pillow
 pyaudio
 pygame
 pyparsing
-pyqt6
-pyqt6-qt6
-pyqt6-sip
 pyserial
 python-dateutil
 pyyaml
