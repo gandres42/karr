@@ -16,9 +16,6 @@ try:
 except KeyboardInterrupt:
     pass
 
-
-
-
 # sorted_data = sorted(samples, key=lambda x: x[0])
 samples = np.array(samples)
 mins = [np.percentile(samples[:, 0], 1), np.percentile(samples[:, 1], 1), np.percentile(samples[:, 2], 1)]
