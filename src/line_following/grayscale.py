@@ -3,7 +3,6 @@ import json
 import math
 
 
-
 class LineLocalizer:
     def __init__(self, calibration):
         self.cal = calibration

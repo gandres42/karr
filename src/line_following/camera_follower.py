@@ -13,7 +13,7 @@ cap.set(cv2.CAP_PROP_FRAME_WIDTH, cap_shape[1])
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, cap_shape[0])
 
 px.set_cam_tilt_angle(-40)
-px.forward(10)
+px.forward(30)
 
 # Loop over all frames captured by camera indefinitely
 while True:
@@ -22,14 +22,11 @@ while True:
 	frame = frame[150:]
 	
 	thresh = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-	_, thresh = cv2.threshold(thresh, 80, 255, cv2.THRESH_BINARY_INV)
+	_, thresh = cv2.threshold(thresh, 60, 255, cv2.THRESH_BINARY_INV)
 	mass = ndimage.center_of_mass(thresh)[1] - (thresh.shape[1] / 2)
 	if mass < 0: mass = max(thresh.shape[1] / -2, mass)
 	if mass > 0: mass = min(thresh.shape[1] / 2, mass)
-	ratio = (mass / thresh.shape[1]) * 100
-	print(ratio)
+	ratio = (mass / thresh.shape[1]) * 120
+	# print(ratio)
 
 	px.set_dir_servo_angle(ratio)
-
-	if cv2.waitKey(1) & 0xFF == ord('q'):
-		break
