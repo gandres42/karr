@@ -4,8 +4,21 @@ import cv2
 import numpy as np
 from picarx import Picarx
 from scipy import ndimage
-from threading import Thread
-from concurrency import Bus
+# concurrent.futures is a wrapper around Thread anyways, so may as well use the lower level one
+from threading import Thread, Lock
+
+class Bus:
+    def __init__(self):
+        self.msg = None
+        self.lock = Lock()
+        
+    def write(self, msg):
+        with self.lock:
+            self.msg = msg
+        
+    def read(self):
+        with self.lock:
+            return self.msg
 
 def scanning_loop(bussin: Bus):
 	cap_shape = (480, 640, 3)
