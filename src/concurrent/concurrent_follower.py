@@ -43,7 +43,7 @@ def control_loop(bussin_respectfully: Bus):
     px.set_cam_tilt_angle(-40)
     while bussin_respectfully.read() is None:
         time.sleep(1/60)
-    px.forward(10)
+    px.forward(30)
     while True:
         angle = bussin_respectfully.read()
         px.set_dir_servo_angle(angle)
